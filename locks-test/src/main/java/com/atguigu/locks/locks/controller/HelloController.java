@@ -18,6 +18,17 @@ public class HelloController {
         redisIncrService.incr();
         return "ok";
     }
+    @GetMapping("/incr2")
+    public String incr2(){
+        redisIncrService.incrDistribute2();
+        return "ok";
+    }
+
+    @GetMapping("/incr3")
+    public String incr3(){
+        redisIncrService.useRedissonForLock();
+        return "ok";
+    }
 
 
 }
