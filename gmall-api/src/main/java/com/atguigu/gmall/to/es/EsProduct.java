@@ -14,7 +14,6 @@ public class EsProduct implements Serializable {
     private String productSn;  //spuId-skuId
     private Long brandId;
     private String brandName;
-
     private Long productCategoryId;
     private String productCategoryName;
     private String pic;
@@ -29,9 +28,13 @@ public class EsProduct implements Serializable {
     private Integer promotionType;//促销类型
     private Integer sort;//排序
     private Integer commentCount;//评论数量共享spu
+
+
     private List<EsProductAttributeValue> attrValueList;//商品的筛选属性(SPU的属性;
 
     private List<EsSkuProductInfo> skuProductInfos; //商品的sku信息
+
+
 
 
 //    网络制式：3G 4G 5G，
