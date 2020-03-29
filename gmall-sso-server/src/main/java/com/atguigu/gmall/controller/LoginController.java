@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 @Controller
 public class LoginController {
@@ -66,7 +67,7 @@ public class LoginController {
             String token = UUID.randomUUID().toString().replace("-","" );
             String memberJson = JSON.toJSONString(member);
             //成功，保存到缓存中
-            stringRedisTemplate.opsForValue().set(SysCacheConstant.LOGIN_MEMBER+token, memberJson, SysCacheConstant.LOGIN_MEMBER_TIMEOUT);
+            stringRedisTemplate.opsForValue().set(SysCacheConstant.LOGIN_MEMBER+token, memberJson, SysCacheConstant.LOGIN_MEMBER_TIMEOUT,TimeUnit.MINUTES);
             LoginResponseVo vo = new LoginResponseVo();
             BeanUtils.copyProperties(member, vo);
             vo.setAccessToken(token);

@@ -43,7 +43,7 @@ public class CartItem implements Serializable {
     @Getter
     private Integer count; //购物项里有多少个
     @Getter
-    private Boolean check;  //购物项的选中状态
+    private Boolean check = true;  //购物项的选中状态
 
 
     private BigDecimal totalPrice; //当前购物项总价

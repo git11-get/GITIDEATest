@@ -2,12 +2,16 @@ package com.atguigu.gmall.ums.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
 import com.atguigu.gmall.ums.entity.Member;
+import com.atguigu.gmall.ums.entity.MemberReceiveAddress;
 import com.atguigu.gmall.ums.mapper.MemberMapper;
+import com.atguigu.gmall.ums.mapper.MemberReceiveAddressMapper;
 import com.atguigu.gmall.ums.service.MemberService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.DigestUtils;
+
+import java.util.List;
 
 /**
  * <p>
@@ -23,6 +27,8 @@ public class MemberServiceImpl extends ServiceImpl<MemberMapper, Member> impleme
 
     @Autowired
     private MemberMapper memberMapper;
+    @Autowired
+    private MemberReceiveAddressMapper memberReceiveAddressMapper;
 
     @Override
     public Member login(String username, String password) {
@@ -34,4 +40,16 @@ public class MemberServiceImpl extends ServiceImpl<MemberMapper, Member> impleme
                 .eq("password", digest));
         return member;
     }
+
+    @Override
+    public List<MemberReceiveAddress> getMemberAddress(Long id) {
+        return memberReceiveAddressMapper.selectList(new QueryWrapper<MemberReceiveAddress>().eq("member_id", id));
+    }
+
+    @Override
+    public MemberReceiveAddress getMemberAddressByAddressId(Long addressId) {
+        return memberReceiveAddressMapper.selectById(addressId);
+    }
+
+
 }

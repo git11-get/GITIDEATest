@@ -422,6 +422,12 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
 
         }
         return esProduct;
+
+    }
+
+    @Override
+    public SkuStock skuInfoById(Long skuId) {
+        return skuStockMapper.selectById(skuId);
     }
 
     /**
